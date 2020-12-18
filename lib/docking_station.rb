@@ -5,7 +5,10 @@ require 'bike'
 class DockingStation
   attr_reader :station
 
-  def initialize
+  DEFAULT_CAPACITY = 20
+
+  def initialize(capacity = DEFAULT_CAPACITY)
+    @capacity = capacity
     @station = []
   end
 
@@ -14,7 +17,7 @@ class DockingStation
   end
 
   def return_bike(bike)
-    raise("The docking station is full. Your bike cannot be docked.") if @station.length > 3
+    raise("The docking station is full. Your bike cannot be docked.") if @station.length > @capacity
     @station << bike
   end
 end
