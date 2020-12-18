@@ -52,8 +52,37 @@ RSpec.describe DockingStation do
     end
 
     it 'should not accept more bikes than the docking station\'s capacity' do
-      21.times { ds.return_bike(Bike.new) }
-      expect{ ds.return_bike(Bike.new) }.to raise_error(RuntimeError, "The docking station is full. Your bike cannot be docked.")
+      20.times { ds.return_bike(Bike.new) }
+      expect{ ds.return_bike(Bike.new) }.to raise_error(RuntimeError, 'The docking station is full. Your bike cannot be docked.')
     end
   end
+
+# ----------------------------------------------------------------
+  #PRIVATE METHOD TESTING PRE-PRIVATIZATION
+
+  # describe '#full?' do
+  #   it 'should be able to be called on docking station' do
+  #     expect(ds).to respond_to(:full?)
+  #   end
+
+  #   it 'should be able to tell if a docking station has room or is at capacity' do
+  #     expect(ds.full?).to eq(false)
+  #     20.times { ds.return_bike(Bike.new) }
+  #     expect(ds.full?).to eq(true)
+  #   end
+  # end
+
+  # describe '#empty?' do
+  #   it "should be able to be called on docking station" do
+  #     expect(ds).to respond_to(:empty?)
+  #   end
+
+  #   it 'should return true if the station is empty' do
+  #     expect(ds.empty?).to eq(true)
+  #     ds.return_bike(Bike.new)
+  #     expect(ds.empty?).to eq(false)
+  #   end
+  # end
+
 end
+
