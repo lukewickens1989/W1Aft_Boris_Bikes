@@ -17,6 +17,7 @@ RSpec.describe Bike do
     it "a new instance of bike class should start off working" do
       expect(bike.status).to eq(true)
     end
+    
   end
 
 end

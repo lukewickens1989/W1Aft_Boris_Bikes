@@ -1,4 +1,4 @@
-# frozen_string_literal: true
+require 'bike.rb'
 
 class DockingStation
   attr_reader :station
@@ -7,5 +7,7 @@ class DockingStation
     @station = []
   end
 
-  def release_bike; end
+  def release_bike; 
+    new_bike = Bike.new
+  end
 end

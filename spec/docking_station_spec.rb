@@ -19,5 +19,15 @@ RSpec.describe DockingStation do
     it 'class should respond to release_bike method' do
       expect(ds).to respond_to(:release_bike)
     end
+
+    it 'should return a new instance of the bike class when called' do
+      expect(ds.release_bike).to be_instance_of(Bike)
+    end
+
+    it 'expects the bike to be working' do
+      bike_test = Bike.new
+      expect(bike_test.working?).to eq(true)
+    end
+
   end
 end
