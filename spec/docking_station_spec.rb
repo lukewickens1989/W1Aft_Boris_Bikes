@@ -45,5 +45,20 @@ RSpec.describe DockingStation do
       ds.return_bike(bike)
       expect(ds.station).to eq([bike])
     end
+
+    it 'should not accept more bikes than the docking station\'s capacity' do
+      bike1 = Bike.new
+      bike2 = Bike.new
+      bike3 = Bike.new
+      bike4 = Bike.new
+      ds.return_bike(bike1)
+      ds.return_bike(bike2)
+      ds.return_bike(bike3)
+      expect(ds.station).to eq([bike1, bike2, bike3])
+      expect(ds.station.length).to eq(3)
+      ds.return_bike(bike4)
+      expect{ ds.return_bike(bike4) }.to raise_error(RuntimeError, "The docking station is full. Your bike cannot be docked.")
+
+    end
   end
 end

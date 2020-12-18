@@ -14,6 +14,7 @@ class DockingStation
   end
 
   def return_bike(bike)
+    raise("The docking station is full. Your bike cannot be docked.") if @station.length > 3
     @station << bike
   end
 end
