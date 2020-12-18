@@ -10,7 +10,7 @@ class DockingStation
   end
 
   def release_bike
-    new_bike = Bike.new
+    raise('There are currently no bikes avaiable.') if @station.empty?
   end
 
   def return_bike(bike)

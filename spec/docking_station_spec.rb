@@ -20,13 +20,14 @@ RSpec.describe DockingStation do
       expect(ds).to respond_to(:release_bike)
     end
 
-    it 'should return a new instance of the bike class when called' do
-      expect(ds.release_bike).to be_instance_of(Bike)
-    end
-
     it 'expects the bike to be working' do
       bike_test = Bike.new
       expect(bike_test.working?).to eq(true)
+    end
+
+    it 'should raise an error if there are no bikes currently docked' do
+      @station = []
+      expect { ds.release_bike }.to raise_error(RuntimeError, 'There are currently no bikes avaiable.')
     end
   end
 
