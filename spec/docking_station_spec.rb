@@ -28,6 +28,21 @@ RSpec.describe DockingStation do
       bike_test = Bike.new
       expect(bike_test.working?).to eq(true)
     end
+  end
 
+  describe '#return_bike' do
+    it 'class should respond to return_bike method' do
+      expect(ds).to respond_to(:return_bike)
+    end
+
+    it 'return_bike should take an argument of bike' do
+      expect(ds).to respond_to(:return_bike).with(1).argument
+    end
+
+    it 'should add the bike to the station variable' do
+      bike = Bike.new
+      ds.return_bike(bike)
+      expect(ds.station).to eq([bike])
+    end
   end
 end
