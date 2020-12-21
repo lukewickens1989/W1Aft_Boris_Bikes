@@ -13,6 +13,10 @@ RSpec.describe DockingStation do
     it 'should be initialized with an array to store bikes' do
       expect(ds.station).to eq([])
     end
+
+    it 'should be initialized with an array to store broken bikes' do
+      expect(ds.workshop).to eq([])
+    end
   end
 
   describe '#release_bike' do
@@ -54,6 +58,14 @@ RSpec.describe DockingStation do
     it 'should not accept more bikes than the docking station\'s capacity' do
       20.times { ds.return_bike(Bike.new) }
       expect{ ds.return_bike(Bike.new) }.to raise_error(RuntimeError, 'The docking station is full. Your bike cannot be docked.')
+    end
+
+    it 'should check the status of the bike and if status = false put it in the workshop' do
+      broken_bike = Bike.new
+      broken_bike.broken
+      ds.return_bike(broken_bike)
+      expect(ds.workshop).to eq([broken_bike])
+      expect(ds.station).to be_empty
     end
   end
 

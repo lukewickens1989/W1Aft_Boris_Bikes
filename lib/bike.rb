@@ -10,4 +10,8 @@ class Bike
   def working?
     @status
   end
+
+  def broken
+    @status = false
+  end
 end

@@ -20,4 +20,12 @@ RSpec.describe Bike do
       expect(bike.status).to eq(true)
     end
   end
+
+  describe '#broken' do
+    it 'should change the status of a bike when called' do
+      broken_bike = Bike.new
+      broken_bike.broken
+      expect(broken_bike.status).to eq(false)
+    end
+  end
 end
