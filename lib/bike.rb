@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Bike
-  attr_reader :status
+  attr_accessor :status
 
   def initialize
     @status = true
